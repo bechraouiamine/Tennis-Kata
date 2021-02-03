@@ -14,6 +14,18 @@ class TennisGameTest {
         tennisGame.point("Player1");
 
         // Then
-        assertEquals("fifteen-Love", tennisGame.score());
+        assertEquals("fifteen-love", tennisGame.score());
+    }
+
+    @Test
+    void should_return_love_fifteen_when_player_two_score() {
+        // Given
+        TennisGame tennisGame = new TennisGame();
+
+        // When
+        tennisGame.point("Player2");
+
+        // Then
+        assertEquals("love-fifteen", tennisGame.score());
     }
 }
