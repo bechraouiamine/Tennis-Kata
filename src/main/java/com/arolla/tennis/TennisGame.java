@@ -15,6 +15,8 @@ public class TennisGame {
             return "fifteen-love";
         } else if (whoScored.equals("Player1Player2")) {
             return "fifteen-all";
+        } else if (whoScored.equals("Player1Player1Player2")) {
+            return "thirty-fifteen";
         }
         return "love-fifteen";
     }

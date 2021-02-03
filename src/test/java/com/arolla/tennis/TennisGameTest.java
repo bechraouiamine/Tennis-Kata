@@ -41,4 +41,18 @@ class TennisGameTest {
         // Then
         assertEquals("fifteen-all", tennisGame.score());
     }
+
+    @Test
+    void should_return_thirty_fifteen_when_player1_scores_twice_player2_scores_once() {
+        // Given
+        TennisGame tennisGame = new TennisGame();
+
+        // When
+        tennisGame.point("Player1");
+        tennisGame.point("Player1");
+        tennisGame.point("Player2");
+
+        // Then
+        assertEquals("thirty-fifteen", tennisGame.score());
+    }
 }
