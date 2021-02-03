@@ -4,24 +4,27 @@ package com.arolla.tennis;
  * Created by aminebechraoui, on 03/02/2021, in com.arolla.tennis
  */
 public class TennisGame {
+    private static final String PLAYER1 = "Player1";
+    private int scoreP1;
+    private int scoreP2;
     private String whoScored = new String();
 
     public void point(String player) {
-        whoScored += player;
+        if (PLAYER1.equals(player)) {
+            scoreP1++;
+        } else {
+            scoreP2++;
+        }
     }
 
     public String score() {
-        if (whoScored.equals("Player1")) {
+        if (scoreP1 == 1 && scoreP2 == 0) {
             return "fifteen-love";
-        } else if (whoScored.equals("Player1Player2")) {
+        } else if (scoreP1 == 1 && scoreP2 == 1) {
             return "fifteen-all";
-        } else if (whoScored.equals("Player1Player1Player2")
-                || whoScored.equals("Player1Player2Player1")
-                || whoScored.equals("Player2Player1Player1")) {
+        } else if (scoreP1 == 2 && scoreP2 == 1) {
             return "thirty-fifteen";
-        } else if (whoScored.equals("Player2Player2Player1")
-                || whoScored.equals("Player2Player1Player2")
-                || whoScored.equals("Player1Player2Player2")) {
+        } else if (scoreP1 == 1 && scoreP2 == 2) {
             return "fifteen-thirty";
         }
         return "love-fifteen";
