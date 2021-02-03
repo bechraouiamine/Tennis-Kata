@@ -20,7 +20,8 @@ public class TennisGame {
                 || whoScored.equals("Player2Player1Player1")) {
             return "thirty-fifteen";
         } else if (whoScored.equals("Player2Player2Player1")
-                || whoScored.equals("Player2Player1Player2")) {
+                || whoScored.equals("Player2Player1Player2")
+                || whoScored.equals("Player1Player2Player2")) {
             return "fifteen-thirty";
         }
         return "love-fifteen";
