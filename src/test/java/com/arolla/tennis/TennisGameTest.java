@@ -98,5 +98,17 @@ class TennisGameTest {
         assertEquals("fifteen-thirty", tennisGame.score());
     }
 
+    @Test
+    void should_return_fifteen_thirty_when_player1_scores_once_player2_scores_twice_unordered_first_case() {
+        // Given
+        TennisGame tennisGame = new TennisGame();
 
+        // When
+        tennisGame.point("Player2");
+        tennisGame.point("Player1");
+        tennisGame.point("Player2");
+
+        // Then
+        assertEquals("fifteen-thirty", tennisGame.score());
+    }
 }
