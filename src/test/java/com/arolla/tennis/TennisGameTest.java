@@ -174,7 +174,7 @@ class TennisGameTest {
     }
 
     @Test
-    void should_return_forty_all_player1_scores_3_player2_scores_3() {
+    void should_return_deuce_player1_scores_3_player2_scores_3() {
         // Given
         TennisGame tennisGame = new TennisGame();
 
