@@ -434,7 +434,7 @@ class TennisGameTest {
     }
 
     @Test
-    void should_return_player1_win_p1_scores_4_player2_scores_6() {
+    void should_return_player2_win_p1_scores_4_player2_scores_6() {
         // Given
         TennisGame tennisGame = new TennisGame();
 
@@ -455,7 +455,7 @@ class TennisGameTest {
     }
 
     @Test
-    void should_return_player1_win_p1_scores_5_player2_scores_7() {
+    void should_return_player2_win_p1_scores_5_player2_scores_7() {
         // Given
         TennisGame tennisGame = new TennisGame();
 
