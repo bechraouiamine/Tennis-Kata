@@ -249,4 +249,24 @@ class TennisGameTest {
         assertEquals("advantage-player1", tennisGame.score());
     }
 
+    @Test
+    void should_return_advantage_player1_when_p1_scores_5_p2_scores_4() {
+        // Given
+        TennisGame tennisGame = new TennisGame();
+
+        // When
+        tennisGame.point("Player1");
+        tennisGame.point("Player1");
+        tennisGame.point("Player1");
+        tennisGame.point("Player2");
+        tennisGame.point("Player2");
+        tennisGame.point("Player2");
+        tennisGame.point("Player1");
+        tennisGame.point("Player2");
+        tennisGame.point("Player1");
+
+        // Then
+        assertEquals("advantage-player1", tennisGame.score());
+    }
+
 }
