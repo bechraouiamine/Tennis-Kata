@@ -8,6 +8,15 @@ public class TennisGame {
     private int scoreP1;
     private int scoreP2;
 
+    public TennisGame() {
+
+    }
+
+    public TennisGame(int scoreP1, int scoreP2) {
+        this.scoreP1 = scoreP1;
+        this.scoreP2 = scoreP2;
+    }
+
     public void point(String player) {
         if (PLAYER1.equals(player)) {
             scoreP1++;

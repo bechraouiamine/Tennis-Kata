@@ -1,480 +1,55 @@
 package com.arolla.tennis;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class TennisGameTest {
-    @Test
-    void should_return_fifteen_love_when_player_one_score() {
+    
+    @ParameterizedTest
+    @MethodSource("providTestCaseAndExpectedResult")
+    void sould_return_expected_param(int scoreP1, int scoreP2, String expected) {
         // Given
-        TennisGame tennisGame = new TennisGame();
+        TennisGame tennisGame;
 
         // When
-        tennisGame.point("Player1");
+        tennisGame = new TennisGame(scoreP1, scoreP2);
 
         // Then
-        assertEquals("fifteen-love", tennisGame.score());
+        assertEquals(expected, tennisGame.score());
+
     }
 
-    @Test
-    void should_return_love_fifteen_when_player_two_score() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player2");
-
-        // Then
-        assertEquals("love-fifteen", tennisGame.score());
-    }
-
-    @Test
-    void should_return_fifteen_all_when_both_players_score() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-
-        // Then
-        assertEquals("fifteen-all", tennisGame.score());
-    }
-
-    @Test
-    void should_return_thirty_fifteen_when_player1_scores_twice_player2_scores_once() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-
-        // Then
-        assertEquals("thirty-fifteen", tennisGame.score());
-    }
-
-    @Test
-    void should_return_thirty_fifteen_when_player1_scores_twice_player2_scores_once_unordered_first_case() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player1");
-
-        // Then
-        assertEquals("thirty-fifteen", tennisGame.score());
-    }
-
-    @Test
-    void should_return_thirty_fifteen_when_player1_scores_twice_player2_scores_once_unordered_second_case() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player2");
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-
-        // Then
-        assertEquals("thirty-fifteen", tennisGame.score());
-    }
-
-    @Test
-    void should_return_fifteen_thirty_when_player1_scores_once_player2_scores_twice() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player1");
-
-        // Then
-        assertEquals("fifteen-thirty", tennisGame.score());
-    }
-
-    @Test
-    void should_return_fifteen_thirty_when_player1_scores_once_player2_scores_twice_unordered_first_case() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player2");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-
-        // Then
-        assertEquals("fifteen-thirty", tennisGame.score());
-    }
-
-    @Test
-    void should_return_fifteen_thirty_when_player1_scores_once_player2_scores_twice_unordered_second_case() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-
-        // Then
-        assertEquals("fifteen-thirty", tennisGame.score());
-    }
-
-    @Test
-    void should_return_thirty_all_when_both_player_score_twice() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-
-        // Then
-        assertEquals("thirty-all", tennisGame.score());
-    }
-
-    @Test
-    void should_return_forty_thirty_player1_scores_3_player2_scores_2() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-
-        // Then
-        assertEquals("forty-thirty", tennisGame.score());
-    }
-
-    @Test
-    void should_return_thirty_forty_player1_scores_2_player2_scores_3() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-
-        // Then
-        assertEquals("thirty-forty", tennisGame.score());
-    }
-
-    @Test
-    void should_return_deuce_player1_scores_3_player2_scores_3() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-
-        // Then
-        assertEquals("deuce", tennisGame.score());
-    }
-
-    @Test
-    void should_return_deuce_both_player_score_4() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-
-
-        // Then
-        assertEquals("deuce", tennisGame.score());
-    }
-
-    @Test
-    void should_return_deuce_both_player_score_5() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-
-        // Then
-        assertEquals("deuce", tennisGame.score());
-    }
-
-    @Test
-    void should_return_advantage_player1_when_p1_scores_4_p2_scores_3() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player1");
-
-        // Then
-        assertEquals("advantage-player1", tennisGame.score());
-    }
-
-    @Test
-    void should_return_advantage_player1_when_p1_scores_5_p2_scores_4() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player1");
-
-        // Then
-        assertEquals("advantage-player1", tennisGame.score());
-    }
-
-    @Test
-    void should_return_advantage_player1_when_p1_scores_6_p2_scores_5() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player1");
-
-        // Then
-        assertEquals("advantage-player1", tennisGame.score());
-    }
-
-    @Test
-    void should_return_advantage_player2_when_p1_scores_3_p2_scores_4() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-
-        // Then
-        assertEquals("advantage-player2", tennisGame.score());
-    }
-
-    @Test
-    void should_return_advantage_player2_when_p1_scores_4_p2_scores_5() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-
-        // Then
-        assertEquals("advantage-player2", tennisGame.score());
-    }
-
-    @Test
-    void should_return_advantage_player2_when_p1_scores_5_p2_scores_6() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-
-        // Then
-        assertEquals("advantage-player2", tennisGame.score());
-    }
-
-    @Test
-    void should_return_player1_win_p1_scores_5_player2_scores_3() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-
-        // Then
-        assertEquals("player1-win", tennisGame.score());
-    }
-
-    @Test
-    void should_return_player1_win_p1_scores_6_player2_scores_4() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-
-        // Then
-        assertEquals("player1-win", tennisGame.score());
-    }
-
-    @Test
-    void should_return_player1_win_p1_scores_7_player2_scores_5() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-
-        // Then
-        assertEquals("player1-win", tennisGame.score());
-    }
-
-    @Test
-    void should_return_player2_win_p1_scores_3_player2_scores_5() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-
-        // Then
-        assertEquals("player2-win", tennisGame.score());
-    }
-
-    @Test
-    void should_return_player2_win_p1_scores_4_player2_scores_6() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-
-        // Then
-        assertEquals("player2-win", tennisGame.score());
-    }
-
-    @Test
-    void should_return_player2_win_p1_scores_5_player2_scores_7() {
-        // Given
-        TennisGame tennisGame = new TennisGame();
-
-        // When
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player1");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-        tennisGame.point("Player2");
-
-        // Then
-        assertEquals("player2-win", tennisGame.score());
+    private static Stream<Arguments> providTestCaseAndExpectedResult() {
+        return Stream.of(
+                Arguments.of(1,1, "fifteen-all"),
+                Arguments.of(2,1, "thirty-fifteen"),
+                Arguments.of(1,2, "fifteen-thirty"),
+                Arguments.of(2,2, "thirty-all"),
+                Arguments.of(3,2, "forty-thirty"),
+                Arguments.of(2,3, "thirty-forty"),
+                Arguments.of(3,3, "deuce"),
+                Arguments.of(4,4, "deuce"),
+                Arguments.of(5,5, "deuce"),
+                Arguments.of(4,3, "advantage-player1"),
+                Arguments.of(5,4, "advantage-player1"),
+                Arguments.of(6,5, "advantage-player1"),
+                Arguments.of(3,4, "advantage-player2"),
+                Arguments.of(4,5, "advantage-player2"),
+                Arguments.of(5,6, "advantage-player2"),
+                Arguments.of(5,3, "player1-win"),
+                Arguments.of(6,4, "player1-win"),
+                Arguments.of(7,5, "player1-win"),
+                Arguments.of(3,5, "player2-win"),
+                Arguments.of(4,6, "player2-win"),
+                Arguments.of(5,7, "player2-win")
+
+        );
     }
 
 }
