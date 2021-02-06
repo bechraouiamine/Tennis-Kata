@@ -187,7 +187,7 @@ class TennisGameTest {
         tennisGame.point("Player2");
 
         // Then
-        assertEquals("forty-all", tennisGame.score());
+        assertEquals("deuce", tennisGame.score());
     }
 
 }
