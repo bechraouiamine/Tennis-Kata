@@ -34,6 +34,8 @@ public class TennisGame {
         } else if (scoreP1 >= 3 && scoreP2 >= 3
                 && scoreP1 == scoreP2) {
             return "deuce";
+        } else if (scoreP1 == 4 && scoreP2 == 3) {
+            return "advantage-player1";
         }
         return "love-fifteen";
     }
