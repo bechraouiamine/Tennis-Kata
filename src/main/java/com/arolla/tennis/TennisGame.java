@@ -7,7 +7,6 @@ public class TennisGame {
     private static final String PLAYER1 = "Player1";
     private int scoreP1;
     private int scoreP2;
-    private String whoScored = new String();
 
     public void point(String player) {
         if (PLAYER1.equals(player)) {
