@@ -370,4 +370,25 @@ class TennisGameTest {
         assertEquals("player1-win", tennisGame.score());
     }
 
+    @Test
+    void should_return_player1_win_p1_scores_6_player2_scores_4() {
+        // Given
+        TennisGame tennisGame = new TennisGame();
+
+        // When
+        tennisGame.point("Player1");
+        tennisGame.point("Player1");
+        tennisGame.point("Player1");
+        tennisGame.point("Player2");
+        tennisGame.point("Player2");
+        tennisGame.point("Player2");
+        tennisGame.point("Player1");
+        tennisGame.point("Player2");
+        tennisGame.point("Player1");
+        tennisGame.point("Player1");
+
+        // Then
+        assertEquals("player1-win", tennisGame.score());
+    }
+
 }

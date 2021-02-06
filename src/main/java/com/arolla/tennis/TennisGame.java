@@ -38,7 +38,8 @@ public class TennisGame {
             return "advantage-player1";
         } else if (scoreP2 >= 4 && scoreP2-scoreP1 == 1) {
             return "advantage-player2";
-        } else if (scoreP1 == 5 && scoreP2 == 3) {
+        } else if (scoreP1 == 5 && scoreP2 == 3
+                    || scoreP1 == 6 && scoreP2 == 4) {
             return "player1-win";
         }
 
