@@ -30,6 +30,8 @@ public class TennisGame {
             return "thirty-all";
         } else if (scoreP1 == 3 && scoreP2 == 2) {
             return "forty-thirty";
+        } else if (scoreP1 == 2 && scoreP2 == 3) {
+            return "thirty-forty";
         }
         return "love-fifteen";
     }
