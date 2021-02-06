@@ -190,4 +190,23 @@ class TennisGameTest {
         assertEquals("deuce", tennisGame.score());
     }
 
+    @Test
+    void should_return_deuce_both_player_score_4() {
+        // Given
+        TennisGame tennisGame = new TennisGame();
+
+        // When
+        tennisGame.point("Player1");
+        tennisGame.point("Player1");
+        tennisGame.point("Player1");
+        tennisGame.point("Player1");
+        tennisGame.point("Player2");
+        tennisGame.point("Player2");
+        tennisGame.point("Player2");
+        tennisGame.point("Player2");
+
+        // Then
+        assertEquals("deuce", tennisGame.score());
+    }
+
 }
