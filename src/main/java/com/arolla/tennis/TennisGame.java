@@ -40,7 +40,11 @@ public class TennisGame {
             return "advantage-player2";
         } else if (scoreP1 >= 4 && scoreP1-scoreP2 == 2) {
             return "player1-win";
-        }
+        } else if (scoreP2 == 5 && scoreP1 == 3
+                    || scoreP2 == 6 && scoreP1 == 4
+                    || scoreP2 == 7 && scoreP1 == 5) {
+                return "player2-win";
+            }
 
         return "love-fifteen";
     }

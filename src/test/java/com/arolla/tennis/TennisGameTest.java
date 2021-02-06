@@ -414,4 +414,67 @@ class TennisGameTest {
         assertEquals("player1-win", tennisGame.score());
     }
 
+    @Test
+    void should_return_player2_win_p1_scores_3_player2_scores_5() {
+        // Given
+        TennisGame tennisGame = new TennisGame();
+
+        // When
+        tennisGame.point("Player1");
+        tennisGame.point("Player1");
+        tennisGame.point("Player1");
+        tennisGame.point("Player2");
+        tennisGame.point("Player2");
+        tennisGame.point("Player2");
+        tennisGame.point("Player2");
+        tennisGame.point("Player2");
+
+        // Then
+        assertEquals("player2-win", tennisGame.score());
+    }
+
+    @Test
+    void should_return_player1_win_p1_scores_4_player2_scores_6() {
+        // Given
+        TennisGame tennisGame = new TennisGame();
+
+        // When
+        tennisGame.point("Player1");
+        tennisGame.point("Player1");
+        tennisGame.point("Player1");
+        tennisGame.point("Player2");
+        tennisGame.point("Player2");
+        tennisGame.point("Player2");
+        tennisGame.point("Player1");
+        tennisGame.point("Player2");
+        tennisGame.point("Player2");
+        tennisGame.point("Player2");
+
+        // Then
+        assertEquals("player2-win", tennisGame.score());
+    }
+
+    @Test
+    void should_return_player1_win_p1_scores_5_player2_scores_7() {
+        // Given
+        TennisGame tennisGame = new TennisGame();
+
+        // When
+        tennisGame.point("Player1");
+        tennisGame.point("Player1");
+        tennisGame.point("Player1");
+        tennisGame.point("Player2");
+        tennisGame.point("Player2");
+        tennisGame.point("Player2");
+        tennisGame.point("Player1");
+        tennisGame.point("Player2");
+        tennisGame.point("Player1");
+        tennisGame.point("Player2");
+        tennisGame.point("Player2");
+        tennisGame.point("Player2");
+
+        // Then
+        assertEquals("player2-win", tennisGame.score());
+    }
+
 }
