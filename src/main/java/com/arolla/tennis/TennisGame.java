@@ -4,6 +4,7 @@ package com.arolla.tennis;
  * Created by aminebechraoui, on 03/02/2021, in com.arolla.tennis
  */
 public class TennisGame {
+    public static final String SEPARATOR = "-";
     private static final String PLAYER1 = "Player1";
     private int scoreP1;
     private int scoreP2;
@@ -26,16 +27,19 @@ public class TennisGame {
     }
 
     public String score() {
+        String result;
         if (scoreP1 == 1 && scoreP2 <4) {
+            result = "fifteen";
             if(scoreP2 == 0) {
-                return "fifteen-love";
+                result += SEPARATOR + "love";
             } else if (scoreP2 == 1) {
-                return "fifteen-all";
+                result += SEPARATOR + "all";
             } else if (scoreP2 == 2) {
-                return "fifteen-thirty";
+                result += SEPARATOR + "thirty";
             } else if (scoreP2 == 3) {
-                return "fifteen-forty";
+                result += SEPARATOR + "forty";
             }
+            return result;
         } else if (scoreP1 == 2 && scoreP2 == 1) {
             return "thirty-fifteen";
         } else if (scoreP1 == 2 && scoreP2 == 2) {
