@@ -1,11 +1,21 @@
 package com.arolla.tennis;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by aminebechraoui, on 03/02/2021, in com.arolla.tennis
  */
 public class TennisGame {
-    public static final String SEPARATOR = "-";
+    private static final String SEPARATOR = "-";
     private static final String PLAYER1 = "Player1";
+    private static final Map<Integer, String> scores = new HashMap<Integer, String>() {{
+        put(0, "love");
+        put(1, "fifteen");
+        put(2, "thirty");
+        put(3, "forty");
+    }
+    };
     private int scoreP1;
     private int scoreP2;
 
@@ -30,26 +40,18 @@ public class TennisGame {
         String result;
         if (scoreP1 == 1 && scoreP2 <4) {
             result = "fifteen";
-            if(scoreP2 == 0) {
-                result += SEPARATOR + "love";
-            } else if (scoreP2 == 1) {
+            if(scoreP2 == scoreP1) {
                 result += SEPARATOR + "all";
-            } else if (scoreP2 == 2) {
-                result += SEPARATOR + "thirty";
-            } else if (scoreP2 == 3) {
-                result += SEPARATOR + "forty";
+            } else {
+                result += SEPARATOR + scores.get(scoreP2);
             }
             return result;
         } else if (scoreP1 == 2 && scoreP2 <4) {
             result = "thirty";
-            if(scoreP2 == 0) {
-                result += SEPARATOR + "love";
-            } else if (scoreP2 == 1) {
-                result += SEPARATOR + "fifteen";
-            } else if (scoreP2 == 2) {
+            if(scoreP2 == scoreP1) {
                 result += SEPARATOR + "all";
-            } else if (scoreP2 == 3) {
-                result += SEPARATOR + "forty";
+            } else {
+                result += SEPARATOR + scores.get(scoreP2);
             }
             return result;
         } else if (scoreP1 == 3 && scoreP2 == 2) {
