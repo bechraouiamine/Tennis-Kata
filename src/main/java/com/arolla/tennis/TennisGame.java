@@ -40,18 +40,22 @@ public class TennisGame {
                 result += SEPARATOR + "forty";
             }
             return result;
-        } else if (scoreP1 == 2 && scoreP2 == 1) {
-            return "thirty-fifteen";
-        } else if (scoreP1 == 2 && scoreP2 == 2) {
-            return "thirty-all";
+        } else if (scoreP1 == 2 && scoreP2 <4) {
+            result = "thirty";
+            if(scoreP2 == 0) {
+                result += SEPARATOR + "love";
+            } else if (scoreP2 == 1) {
+                result += SEPARATOR + "fifteen";
+            } else if (scoreP2 == 2) {
+                result += SEPARATOR + "all";
+            } else if (scoreP2 == 3) {
+                result += SEPARATOR + "forty";
+            }
+            return result;
         } else if (scoreP1 == 3 && scoreP2 == 2) {
             return "forty-thirty";
-        } else if (scoreP1 == 2 && scoreP2 == 3) {
-            return "thirty-forty";
         } else if (scoreP1 == 3 && scoreP2 == 0) {
             return "forty-love";
-        } else if (scoreP1 == 2 && scoreP2 == 0) {
-            return "thirty-love";
         } else if (scoreP1 >= 3 && scoreP2 >= 3
                 && scoreP1 == scoreP2) {
             return "deuce";
