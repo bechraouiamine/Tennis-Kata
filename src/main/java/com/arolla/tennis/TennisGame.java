@@ -26,14 +26,16 @@ public class TennisGame {
     }
 
     public String score() {
-        if (scoreP1 == 1 && scoreP2 == 0) {
-            return "fifteen-love";
-        } else if (scoreP1 == 1 && scoreP2 == 1) {
-            return "fifteen-all";
-        } else if (scoreP1 == 1 && scoreP2 == 2) {
-            return "fifteen-thirty";
-        } else if (scoreP1 == 1 && scoreP2 == 3) {
-            return "fifteen-forty";
+        if (scoreP1 == 1) {
+            if(scoreP2 == 0) {
+                return "fifteen-love";
+            } else if (scoreP2 == 1) {
+                return "fifteen-all";
+            } else if (scoreP2 == 2) {
+                return "fifteen-thirty";
+            } else if (scoreP2 == 3) {
+                return "fifteen-forty";
+            }
         } else if (scoreP1 == 2 && scoreP2 == 1) {
             return "thirty-fifteen";
         } else if (scoreP1 == 2 && scoreP2 == 2) {
