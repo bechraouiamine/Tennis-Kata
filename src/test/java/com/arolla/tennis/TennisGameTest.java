@@ -27,12 +27,19 @@ class TennisGameTest {
 
     private static Stream<Arguments> providTestCaseAndExpectedResult() {
         return Stream.of(
+                Arguments.of(1,0, "fifteen-love"),
                 Arguments.of(1,1, "fifteen-all"),
-                Arguments.of(2,1, "thirty-fifteen"),
                 Arguments.of(1,2, "fifteen-thirty"),
+                Arguments.of(1,3, "fifteen-forty"),
+
+                Arguments.of(2,1, "thirty-fifteen"),
                 Arguments.of(2,2, "thirty-all"),
                 Arguments.of(3,2, "forty-thirty"),
                 Arguments.of(2,3, "thirty-forty"),
+
+
+                Arguments.of(2,0, "thirty-love"),
+                Arguments.of(3,0, "forty-love"),
 
                 Arguments.of(3,3, "deuce"),
                 Arguments.of(4,4, "deuce"),
