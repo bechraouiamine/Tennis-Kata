@@ -37,32 +37,15 @@ public class TennisGame {
     }
 
     public String score() {
-        String result;
-        if (scoreP1 == 1 && scoreP2 <4) {
-            result = "fifteen";
+        String result = new String();
+        if (scoreP1 <4 && scoreP2 <4 && scoreP1+scoreP2 != 6) {
             if(scoreP2 == scoreP1) {
-                result += SEPARATOR + "all";
+                result += scores.get(scoreP1) + SEPARATOR + "all";
             } else {
-                result += SEPARATOR + scores.get(scoreP2);
+                result += scores.get(scoreP1) + SEPARATOR + scores.get(scoreP2);
             }
             return result;
-        } else if (scoreP1 == 2 && scoreP2 <4) {
-            result = "thirty";
-            if(scoreP2 == scoreP1) {
-                result += SEPARATOR + "all";
-            } else {
-                result += SEPARATOR + scores.get(scoreP2);
-            }
-            return result;
-        } else if (scoreP1 == 3 && scoreP2 <3) {
-            result = "forty";
-            if(scoreP2 == scoreP1) {
-                result += SEPARATOR + "all";
-            } else {
-                result += SEPARATOR + scores.get(scoreP2);
-            }
-            return result;
-        }else if (scoreP1 >= 3 && scoreP2 >= 3
+        } else if (scoreP1 >= 3 && scoreP2 >= 3
                 && scoreP1 == scoreP2) {
             return "deuce";
         } else if (scoreP1 >= 4 && scoreP1-scoreP2 == 1) {
