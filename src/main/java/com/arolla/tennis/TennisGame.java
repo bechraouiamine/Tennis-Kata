@@ -54,13 +54,15 @@ public class TennisGame {
                 result += SEPARATOR + scores.get(scoreP2);
             }
             return result;
-        } else if (scoreP1 == 3 && scoreP2 == 2) {
-            return "forty-thirty";
-        } else if (scoreP1 == 3 && scoreP2 == 1) {
-            return "forty-fifteen";
-        } else if (scoreP1 == 3 && scoreP2 == 0) {
-            return "forty-love";
-        } else if (scoreP1 >= 3 && scoreP2 >= 3
+        } else if (scoreP1 == 3 && scoreP2 <3) {
+            result = "forty";
+            if(scoreP2 == scoreP1) {
+                result += SEPARATOR + "all";
+            } else {
+                result += SEPARATOR + scores.get(scoreP2);
+            }
+            return result;
+        }else if (scoreP1 >= 3 && scoreP2 >= 3
                 && scoreP1 == scoreP2) {
             return "deuce";
         } else if (scoreP1 >= 4 && scoreP1-scoreP2 == 1) {
