@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class TennisGameTest {
 
     @ParameterizedTest
-    @MethodSource("providTestCaseAndExpectedResult")
+    @MethodSource("provideTestCaseAndExpectedResult")
     void sould_return_expected_param(int scoreP1, int scoreP2, String expected) {
         // Given
         TennisGame tennisGame;
@@ -25,7 +25,7 @@ class TennisGameTest {
 
     }
 
-    private static Stream<Arguments> providTestCaseAndExpectedResult() {
+    private static Stream<Arguments> provideTestCaseAndExpectedResult() {
         return Stream.of(
                 Arguments.of(0,0, "love-all"),
                 Arguments.of(0,1, "love-fifteen"),
