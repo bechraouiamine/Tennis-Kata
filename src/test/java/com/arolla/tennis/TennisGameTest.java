@@ -39,8 +39,9 @@ class TennisGameTest {
                 Arguments.of(2,3, "thirty-forty"),
                 Arguments.of(2,4, "player2-win"),
 
-                Arguments.of(3,2, "forty-thirty"),
                 Arguments.of(3,0, "forty-love"),
+                Arguments.of(3,1, "forty-fifteen"),
+                Arguments.of(3,2, "forty-thirty"),
 
                 Arguments.of(3,3, "deuce"),
                 Arguments.of(4,4, "deuce"),

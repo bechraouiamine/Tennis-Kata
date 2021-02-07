@@ -56,6 +56,8 @@ public class TennisGame {
             return result;
         } else if (scoreP1 == 3 && scoreP2 == 2) {
             return "forty-thirty";
+        } else if (scoreP1 == 3 && scoreP2 == 1) {
+            return "forty-fifteen";
         } else if (scoreP1 == 3 && scoreP2 == 0) {
             return "forty-love";
         } else if (scoreP1 >= 3 && scoreP2 >= 3
@@ -69,7 +71,7 @@ public class TennisGame {
             return "player1-win";
         } else if (scoreP2 >= 4 && scoreP2-scoreP1 >= 2) {
                 return "player2-win";
-            }
+        }
 
         return "love-fifteen";
     }
