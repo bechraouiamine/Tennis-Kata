@@ -26,7 +26,7 @@ public class TennisGame {
     }
 
     public String score() {
-        if (scoreP1 == 1) {
+        if (scoreP1 == 1 && scoreP2 <4) {
             if(scoreP2 == 0) {
                 return "fifteen-love";
             } else if (scoreP2 == 1) {
